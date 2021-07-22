@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+	<title>Login</title>
+
+	<!--JQUERY-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<!-- Los iconos tipo Solid de Fontawesome-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+	<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+
+</head>
+
+<body style="background-image: url(/img/escuela-interor-aula.jpg);">
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xl-10 col-lg-12 col-md-9">
+				<div class="card o-hidden border-0 shadow-lg my-5">
+					<div class="card-body p-0">
+						<div class="row">
+							<div class="col-lg-6 d-none d-lg-block bg-login-image" style="height:100px;">
+								<img src="/img/insignia.jpg" class="img-thumbnail" style="height:441%;">
+							</div>
+							<div class="col-lg-6">
+								<div class="p-5">
+									<div class="text-center">
+										<h1 class="h4 text-gray-900 mb-4">Iniciar Sesión</h1>
+									</div>
+									<form class="col-12" th:action="@{/login}" method="post">
+										<div class="form-group" id="user-group">
+											<label for="">Correo:</label>
+											<input type="text" class="form-control" placeholder="" name="username"
+												required />
+										</div>
+										<div class="form-group" id="contrasena-group">
+											<label for="">Contraseña:</label>
+											<input type="password" class="form-control" placeholder="" name="password"
+												required />
+										</div>
+										<button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>
+											Ingresar </button>
+									</form>
+									<br>
+									<div th:if="${param.error}" class="alert alert-danger" role="alert">
+										Correo y/o contraseña incorrecta
+									</div>
+									<div th:if="${param.logout}" class="alert alert-success" role="alert">
+										Se ha cerrado sesión
+									</div>
+									<hr>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+		aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" th:href="@{/index}"><i>Escuela1</i></a>
+	<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+
+			<!-- Muestra dropdown Lista cursos de profesor, validando si es profesor el usuario-->
+			<span th:if="${#authorization.expression('hasRole(''ROLE_PROFESOR'')')}">
+				    <div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Cursos
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/listarCursosProfesor}" class="dropdown-item">Mis Cursos</a>
+						</div>
+					</div>
+				</span>
+				
+				<!-- Muestra dropdown Lista cursos, validando si es profesor el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+				    <div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Cursos
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/cursos}" class="dropdown-item">Mis Cursos</a>
+						</div>
+					</div>
+				</span>
+				
+				<!-- Muestra dropdown Asignaturas, validando si es Admin el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Asignaturas
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/asignaturas}" class="dropdown-item">Ver asignaturas</a>
+						</div>
+					</div>
+				</span>
+
+				<!-- Muestra dropdown Asignaturas, validando si es estudiante el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_PROFESOR'')')}">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Asignaturas
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/listarAsignaturas}" class="dropdown-item">Mis Asignaturas</a>
+						</div>
+					</div>
+				</span>
+				
+				<!-- Muestra dropdown Asignaturas, validando si es estudiante el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_ESTUDIANTE'')')}">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Asignaturas
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/listarAsignatura}" class="dropdown-item">Ver Asignaturas</a>
+						</div>
+					</div>				
+
+				</span>
+				
+				<!-- Muestra dropdown Asignaturas, validando si es estudiante el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_ESTUDIANTE'')')}">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Notas
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/listarNotasEstudiante}" class="dropdown-item">Ver Notas</a>
+						</div>
+					</div>
+					
+				</span>
+				
+				<!-- Muestra dropdown Notas, validando si es Profesor el usuario-->
+				 <span th:if="${#authorization.expression('hasRole(''ROLE_PROFESOR'')')}">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-book"></i>Notas
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a th:href="@{/SubirNotas}" class="dropdown-item">Subir Notas</a>
+                            <a th:href="@{/listarNotas}" class="dropdown-item">Ultimas Notas Subidas</a>
+                        </div>
+                    </div>
+                </span>
+                    <span th:if="${#authorization.expression('hasRole(''ROLE_PROFESOR'')')}">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-book"></i>RegistroNotas
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a th:href="@{/seleccionarCursoNota}" class="dropdown-item">Ver Registros de Notas</a>
+                        </div>
+                    </div>
+                </span>
+				
+
+				<!-- Muestra dropdown Ver Usuarios, validando si es Admin el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Usuarios
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/listarUsuarios}" class="dropdown-item">Ver usuarios</a>
+						</div>
+					</div>
+				</span>
+				
+				<!-- Muestra dropdown Material desde profesor, validando si es profesor el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_PROFESOR'')')}">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Material
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/SubirMaterialProfesor}" class="dropdown-item">Subir Material</a>
+	                        <a th:href="@{/showFilesProfesor}" class="dropdown-item">Material Subido</a>
+						</div>
+					</div>
+				</span>
+				
+				<!-- Muestra dropdown Ver Material, validando si es Estudiante el usuario-->
+				<span th:if="${#authorization.expression('hasRole(''ROLE_ESTUDIANTE'')')}">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-book"></i> Material
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a th:href="@{/SubirMaterial}" class="dropdown-item">Subir Material</a>
+	                        <a th:href="@{/showFiles}" class="dropdown-item">Material Subido</a>
+						</div>
+					</div>
+				</span>
+				
+			</ul>
+				
+			</ul>
+
+			<ul class="navbar-nav btn-group my-2 my-lg-0" role="group">
+				<a style="color: white; cursor: pointer" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fas fa-user-tie"></i></a>
+				<div class="dropdown-menu text-center dropdown-menu-right">
+
+					<a th:href="@{/login}" class="dropdown-item">Inicio Sesion</a>
+					<a class="dropdown-item" href="#"><img src="img/user.png" alt="60" height="60" /></a>
+					<a class="dropdown-item">Usuario</a>
+					<div class="dropdown-divider"></div>
+
+
+					<form th:action="@{/logout}" method="post">
+						<input type="Submit" value="Cerrar Sesion" /></i></a>
+					</form>
+
+
+
+				</div>
+			</ul>
+		</div>
+	</nav>

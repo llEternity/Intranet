@@ -1,0 +1,9 @@
+.bdr {
+	border-radius: 8px; overflow: hidden;
+
+}
+
+
+body {
+	background: url('/img/escuela-interor-aula.jpg');
+}
